@@ -27,8 +27,6 @@ if [ ! -z $NGROK_AUTH ]; then
   ./ngrok authtoken $NGROK_AUTH
 fi
 
-args=$@
-
 if [[ "$ARGS" == "" ]]; then
   NGROK_OPTIONS=""
 
@@ -39,7 +37,9 @@ if [[ "$ARGS" == "" ]]; then
   fi
 
   ./ngrok $NGROK_PROTOCOL $NGROK_OPTIONS $NGROK_TARGET:$NGROK_PORT
+elif [ -x $ARGS ]; then
+  exec "$ARGS"
 else
+  ./ngrok $ARGS
   # Execute the CMD from the Dockerfile and pass in all of its arguments.
-  exec ./ngrok $@  
 fi
