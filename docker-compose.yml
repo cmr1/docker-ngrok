@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  nginx:
+    image: cmr1/nginx
+
+  ngrok:
+    build: .
+    env_file:
+      - .ngrok.env
+    depends_on:
+      - "nginx"
