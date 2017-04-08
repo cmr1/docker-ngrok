@@ -5,9 +5,9 @@ services:
 before_install:
 - docker-compose build
 - docker-compose up -d
-script:
 - docker-compose ps
-- docker-compose exec ngrok /bin/bash /ngrok/status
+script:
+- "./test.sh"
 after_success:
 - "./deploy.sh"
 notifications:
