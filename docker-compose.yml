@@ -6,7 +6,5 @@ services:
 
   ngrok:
     build: .
-    env_file:
-      - .ngrok.env
     depends_on:
-      - "nginx"
+      - nginx
