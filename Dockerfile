@@ -15,7 +15,8 @@ RUN curl https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -o ng
 
 RUN unzip ngrok.zip && rm ngrok.zip
 
-COPY docker-entrypoint.sh .
-COPY status .
+COPY . .
+
+EXPOSE 4040
 
 ENTRYPOINT [ "./docker-entrypoint.sh" ]

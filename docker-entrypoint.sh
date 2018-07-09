@@ -28,12 +28,12 @@ if [ ! -z $NGROK_AUTH ]; then
 fi
 
 if [[ "$ARGS" == "" ]]; then
-  NGROK_OPTIONS=""
+  NGROK_OPTIONS="-config=/ngrok/ngrok.yml"
 
   if [ ! -z $NGROK_HOSTNAME ]; then
-    NGROK_OPTIONS="-hostname=${NGROK_HOSTNAME}"
+    NGROK_OPTIONS="$NGROK_OPTIONS -hostname=${NGROK_HOSTNAME}"
   elif [ ! -z $NGROK_SUBDOMAIN ]; then
-    NGROK_OPTIONS="-subdomain=${NGROK_SUBDOMAIN}"
+    NGROK_OPTIONS="$NGROK_OPTIONS -subdomain=${NGROK_SUBDOMAIN}"
   fi
 
   ./ngrok $NGROK_PROTOCOL $NGROK_OPTIONS $NGROK_TARGET:$NGROK_PORT

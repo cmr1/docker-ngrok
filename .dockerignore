@@ -1,0 +1,9 @@
+.git
+.gitignore
+.travis.yml
+deploy.sh
+docker-compose.yml
+Dockerfile
+LICENSE
+README.md
+test.sh
