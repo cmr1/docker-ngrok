@@ -11,6 +11,8 @@ ARGS=$@
 # NGROK_PROTOCOL - Can either be HTTP or TCP, and it defaults to HTTP if not specified. If set to TCP, Ngrok will allocate a port instead of a subdomain and proxy TCP requests directly to your application.
 # NGROK_PORT - Port to expose (defaults to 80 for HTTP protocol).
 
+NGROK_OPTIONS="-config=/ngrok/ngrok.yml"
+
 if [ -z $NGROK_PROTOCOL ]; then
   NGROK_PROTOCOL=http
 fi
@@ -24,12 +26,10 @@ if [ -z $NGROK_TARGET ]; then
 fi
 
 if [ ! -z $NGROK_AUTH ]; then
-  ./ngrok authtoken $NGROK_AUTH
+  ./ngrok authtoken $NGROK_AUTH $NGROK_OPTIONS
 fi
 
 if [[ "$ARGS" == "" ]]; then
-  NGROK_OPTIONS="-config=/ngrok/ngrok.yml"
-
   if [ ! -z $NGROK_HOSTNAME ]; then
     NGROK_OPTIONS="$NGROK_OPTIONS -hostname=${NGROK_HOSTNAME}"
   elif [ ! -z $NGROK_SUBDOMAIN ]; then
