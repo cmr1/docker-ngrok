@@ -25,12 +25,12 @@ push() {
 
   # Authenticate with DockerHub
   echo "Authenticating with DockerHub"
-  docker login -u="$DOCKER_HUB_USERNAME" -p="$DOCKER_HUB_PASSWORD" 
-  
+  docker login -u="$DOCKER_HUB_USERNAME" -p="$DOCKER_HUB_PASSWORD"
+
   # Tag the Docker image
   echo "Tagging for release '$IMAGE:$TAG'"
   docker tag $IMAGE:$TAG $IMAGE:$TAG
-  
+
   # Push the tagged image
   echo "Pushing tagged release '$TAG'"
   docker push $IMAGE:$TAG
