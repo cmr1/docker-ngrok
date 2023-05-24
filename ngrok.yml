@@ -1,2 +1,4 @@
 log: stdout
 web_addr: 0.0.0.0:4040
+version: "2"
+region: us
